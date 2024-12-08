@@ -17,7 +17,7 @@ public:
 
     void displayItem() const {
         cout << left << setw(4) << itemId << ". " << setw(20) << name
-             << "₹" << right << setw(8) << fixed << setprecision(2) << priceInINR << endl;
+             << "Rs." << right << setw(8) << fixed << setprecision(2) << priceInINR << endl;
     }
 };
 
@@ -58,12 +58,12 @@ public:
         }
 
         double total = 0;
-        cout << "\n-----------------------------------\n";
+        cout << "\n---------------------------------------------\n";
         cout << "              YOUR BILL            \n";
-        cout << "-----------------------------------\n";
+        cout << "---------------------------------------------\n";
         cout << left << setw(4) << "ID" << setw(20) << "Item" << setw(8) << "Qty"
-             << right << setw(10) << "Price (₹)" << endl;
-        cout << "-----------------------------------\n";
+             << right << setw(10) << "Price (Rs.)" << endl;
+        cout << "---------------------------------------------\n";
 
         for (const auto& entry : items) {
             const FoodItem& item = entry.first;
@@ -71,12 +71,12 @@ public:
             double priceInINR = item.priceInINR * quantity;
             total += priceInINR;
             cout << left << setw(4) << item.itemId << setw(20) << item.name
-                 << setw(8) << quantity << right << setw(10) << fixed << setprecision(2) << priceInINR << endl;
+                 << setw(8) << quantity << right << setw(8) << fixed << setprecision(2) << priceInINR << endl;
         }
 
-        cout << "-----------------------------------\n";
-        cout << left << setw(28) << "Total" << right << "₹" << fixed << setprecision(2) << total << endl;
-        cout << "-----------------------------------\n";
+        cout << "---------------------------------------------\n";
+        cout << left << setw(32) << "Total" << right << "Rs." << fixed << setprecision(2) << total << endl;
+        cout << "---------------------------------------------\n";
     }
 };
 
@@ -100,7 +100,7 @@ int main() {
     cout << "-----------------------------------\n";
     cout << "          Menu of Food Items      \n";
     cout << "-----------------------------------\n";
-    cout << left << setw(4) << "ID" << setw(20) << "Item" << "Price (₹)" << endl;
+    cout << left << setw(4) << "ID" << setw(20) << "Item" << "Price (Rs.)" << endl;
     cout << "-----------------------------------\n";
     for (const auto& item : items) {
         item.displayItem();
@@ -124,7 +124,7 @@ int main() {
 
         switch (choice) {
             case 1: {
-                cout << "Enter the item ID to add to the cart (1-10): ";
+                cout << "Enter the item ID to add : ";
                 cin >> choice;
                 if (choice < 1 || choice > 10) {
                     cout << "Invalid item ID. Please try again.\n";
